@@ -26,7 +26,7 @@ namespace CONEXIONES
 
         string rutaArchivol = ((@"C:\Users\anner\Desktop\Universidad Mariano Galvez\Tercer Semestre\Programacion 1\datosTexto.csv"));
         string rutaConexion = "Data Source = DESKTOP-03L4M4P\\SQLEXPRESS; Initial Catalog = Alumnos; Integrated Security = True";
-        string rutaConexionMysql = "Server=localhost\\MySqlServer;Port=3306;DATABASE=alumnosmysql;Uid=root;Pwd=SoyAgente2341; ";
+        string rutaConexionMysql = "Server=localhost;Database=alumnosmysql; Port=3306; Username=root; Password=SoyAgente2341;";
         ClsArchivo Carga = new ClsArchivo();
         SqlConnection conn = new SqlConnection("Data Source = DESKTOP-03L4M4P\\SQLEXPRESS; Initial Catalog = Alumnos; Integrated Security = True");
         ClsClases Consulta = new ClsClases();

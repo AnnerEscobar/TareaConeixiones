@@ -50,8 +50,8 @@ namespace CONEXIONES.CONTENEDOR_DE_CLASES
 
         public void CArgarARchivoMysql(string rutaArchivo, string rutaConexion)
         {
-            try
-            {
+            //try
+            //{
                 MySqlConnection MySql = new MySqlConnection(rutaConexion);
                 int contador = 0;
                 MySql.Open();
@@ -63,22 +63,28 @@ namespace CONEXIONES.CONTENEDOR_DE_CLASES
                     {
 
                         var values = line.Split(';');
-                        var sql = "INSERT INTO TbAlumnos VALUES (" + values[0] + ", '" + values[1] + "', " + values[2] + ", " + values[3] + ", " + values[4] + ", '" + values[5] + "')";
+                        var sql = "INSERT INTO Alumnos VALUES (" + values[0] + ", '" + values[1] + "', " + values[2] + ", " + values[3] + ", " + values[4] + ", '" + values[5] + "')";
                         var cmd = new MySqlCommand();
                         cmd.CommandText = sql;
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Connection = MySql;
+                    try
+                    {
                         cmd.ExecuteNonQuery();
+                    }catch(Exception e)
+                    {
+                        MessageBox.Show("No se puede cargar Pues hay repetidos en la clave primaria");
+                    }
                     }
                     contador++;
                 }
                 MySql.Close();
                 MessageBox.Show(@"ARCHIVOS CARGADOS CORRECTAMENTE A LA DATABASE");
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("ERROR AL CARGAR TU ARCHIVO A LA DATABASE");
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    MessageBox.Show("ERROR AL CARGAR TU ARCHIVO A LA DATABASE");
+            //}
         }
     }
 }
